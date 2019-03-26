@@ -1,0 +1,132 @@
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet'>
+
+<link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<script>
+var number = /([0-9])/;
+var alphabets = /([a-z])/;
+var upper=/([A-Z])/;
+var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<, ])/;
+$(document).ready(function(){
+$("#pwd").keyup(function(){
+
+if($('#pwd').val().length==0)
+{
+   $("#a").width("0%").css("background-color","red");
+   $("#a").text('0% (Weak)').css("color","black");
+}
+if($('#pwd').val().length>=4 && $('#pwd').val().length<=6)
+{
+   $("#a").width("30%").css("background-color","red");
+   $("#a").text('30% (Weak)');
+}
+if($('#pwd').val().length>=7 && $('#pwd').val().length<=8)
+{
+   $("#a").width("40%").css("background-color","red");
+   $("#a").text('40% (Weak)');
+}
+if($('#pwd').val().length>8)
+{
+   $("#a").width("60%").css("background-color","orange");
+   $("#a").text('60% (Moderate)');
+}
+if($('#pwd').val().length>8 && $('#pwd').val().match(upper))
+{
+   $("#a").width("70%").css("background-color","lightgreen");
+   $("#a").text('70% (Good)');
+}
+if($('#pwd').val().match(alphabets) &&  $('#pwd').val().length>8 && $('#pwd').val().match(upper))
+{
+   $("#a").width("80%").css("background-color","lightgreen");
+   $("#a").text('80% (Good)');
+}
+if($('#pwd').val().match(number) && $('#pwd').val().match(alphabets) && $('#pwd').val().match(upper) &&  $('#pwd').val().length>8)
+{
+   $("#a").width("90%").css("background-color","lightgreen");
+   $("#a").text('90% (Good)');
+}
+if($('#pwd').val().match(number) && $('#pwd').val().match(alphabets) && $('#pwd').val().match(upper) && $('#pwd').val().match(special_characters)&&$('#pwd').val().length>=8)
+{
+   $("#a").width("100%").css("background-color","green");
+   $("#a").text('100% (Strong)');
+}
+});
+});
+
+
+
+</script>
+<style type="text/css">
+  body{
+  background-color:rgba(34,167,240,0.6);
+  background-size:cover;
+  width:100vw;
+  height:100vh;
+overflow-x: hidden;
+overflow-y: hidden;
+text-align:center;
+  }
+  .container{
+    width:50vw;
+    
+    margin-top:3%;
+  }
+@media(max-width:800px)
+{
+  .container{
+    width:79vw;
+  }
+}
+  h2{
+    font-family:Helvetica;
+    text-align:center;
+    padding:1vw;
+    color:white;
+      font: 400 5vh/1.2 'Merienda One', Helvetica, sans-serif;color:white;text-shadow: 3px 3px 3px rgba(13,13,35,0.9);
+
+  background-color: rgba(34, 167, 240, 1);
+  }
+</style>
+</head>
+<title>Sign Up</title>
+<body>
+
+<div class="container" style="text-align:justify;">
+<h2>Sign Up
+<span style="color:white;"class="glyphicon glyphicon-envelope"></span></h2>
+
+<div class="jumbotron">
+<form>
+<lable><b>Username:</b></lable><br>
+<div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" class="form-control" minlength="3" placeholder="Enter name" name="name" required>
+</div>
+<br>
+<lable><b>Create Password:</b></lable><br>
+<div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> <input type="password" class="form-control" minlength="4" id="pwd" placeholder="Enter password" name="pwd" required>
+</div>
+ <div class="checkbox">
+      <label><input type="checkbox" name="remember"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-info btn-md" id="sub"->Submit</button>
+
+</form> 
+<br>
+ <div class="progress">
+    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" style="color:white;font-weight:bolder;" aria-valuemax="100" style="width:0%" id="a">
+     
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>
